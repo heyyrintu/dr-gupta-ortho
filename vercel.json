@@ -1,0 +1,18 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/about-2/:path*", "destination": "/about", "statusCode": 301 },
+    { "source": "/robotics/:path*", "destination": "/robotic-joint-replacement", "statusCode": 301 },
+    { "source": "/contacts/:path*", "destination": "/book", "statusCode": 301 },
+    { "source": "/form/:path*", "destination": "/book", "statusCode": 301 }
+  ],
+  "headers": [
+    { "source": "/assets/(.*)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" } ] },
+    { "source": "/fonts/(.*)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=2592000" } ] },
+    { "source": "/models/(.*)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=2592000" } ] },
+    { "source": "/images/(.*)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=2592000" } ] },
+    { "source": "/", "headers": [ { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" } ] },
+    { "source": "/(about|book|robotic-joint-replacement|404)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" } ] }
+  ]
+}

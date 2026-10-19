@@ -1,0 +1,36 @@
+# Netlify / Cloudflare Pages cache headers (vercel.json mirrors this).
+# Rules are matched per path and values for the same header are JOINED, so paths must not overlap —
+# that's why there is no catch-all /* rule and HTML routes are listed one by one.
+
+# Vite output: content-hashed filenames, safe to cache forever.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Unhashed static files (fonts, 3D model, photos): 30 days. If one of these changes, rename it
+# (e.g. knee-model.v2.json) and update its references, or visitors may keep the old copy for up to 30 days.
+/fonts/*
+  Cache-Control: public, max-age=2592000
+/models/*
+  Cache-Control: public, max-age=2592000
+/images/*
+  Cache-Control: public, max-age=2592000
+
+# Prerendered pages: always revalidate so a deploy shows up immediately.
+/
+  Cache-Control: public, max-age=0, must-revalidate
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+/about
+  Cache-Control: public, max-age=0, must-revalidate
+/about.html
+  Cache-Control: public, max-age=0, must-revalidate
+/book
+  Cache-Control: public, max-age=0, must-revalidate
+/book.html
+  Cache-Control: public, max-age=0, must-revalidate
+/robotic-joint-replacement
+  Cache-Control: public, max-age=0, must-revalidate
+/robotic-joint-replacement.html
+  Cache-Control: public, max-age=0, must-revalidate
+/404.html
+  Cache-Control: public, max-age=0, must-revalidate

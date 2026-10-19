@@ -1,0 +1,17 @@
+# Netlify / Cloudflare Pages. First match wins.
+# Pages are prerendered to /index.html, /about.html, /book.html, /robotic-joint-replacement.html
+# (served at /about etc.). Unknown URLs get /404.html with a 404 status automatically.
+
+# Old WordPress URLs → new pages (301 = permanent, passes search ranking)
+/about-2/*     /about                       301
+/about-2       /about                       301
+/robotics/*    /robotic-joint-replacement   301
+/robotics      /robotic-joint-replacement   301
+/contacts/*    /book                        301
+/contacts      /book                        301
+/form/*        /book                        301
+/form          /book                        301
+
+# Old WordPress blog posts (case studies linked from the home page) are NOT handled here yet:
+# migrate them into this site, or keep the old blog alive (e.g. on a subdomain) and add 301s, e.g.
+# /addressing-advanced-active-kochs-knee-with-bone-destruction-can-arthroplasty-be-a-solution/  https://blog.example/...  301

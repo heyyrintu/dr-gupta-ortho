@@ -1,0 +1,17 @@
+BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International
+
+License: Creative Commons Attribution 4.0 International
+https://creativecommons.org/licenses/by/4.0/
+Dataset license record: https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html
+Source: https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html
+
+Data used: BodyParts3D 3.0, polygon reduction 95% (2011-09-15 release) — left femur (FMA24475),
+left tibia (FMA24478), left fibula (FMA24481), left patella (FMA24487).
+https://dbarchive.biosciencedbc.jp/data/bodyparts3d/20110915/BodyParts3D_3.0_obj_95.zip
+
+Modifications (scripts/build_knee.py → public/models/knee-model.json):
+- Converted Z-up to Y-up and centred on the knee joint line.
+- Smoothed the surfaces (Taubin filter, no shrinkage).
+- Cut the distal femur (~9 mm) and proximal tibia (~8 mm) into separate pieces with flat saw-cut faces.
+- Baked per-vertex ambient occlusion and quantised positions to 16-bit integers.
+- Added procedurally modelled, illustrative knee-replacement implants (not a real product, not BodyParts3D data).

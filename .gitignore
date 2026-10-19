@@ -1,0 +1,10 @@
+node_modules
+dist
+.DS_Store
+*.log
+dist-ssr
+
+# local editor/agent settings
+.claude/settings.local.json
+.env
+.env.*

@@ -1,0 +1,105 @@
+/* Design tokens — Dr. Siddharth Gupta site ("clinical glass": sky-blue gradients, frosted cards, navy + mint) */
+
+/* Self-hosted fonts (SIL OFL 1.1, see /licenses/): the Google Fonts latin subsets as variable woff2.
+   Both files are preloaded in index.html. */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600 900;
+  font-display: swap;
+  src: url('/fonts/archivo-latin-wght.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/manrope-latin-wght.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Metric-matched Arial stand-ins shown until the web fonts arrive, so the swap doesn't shift layout
+   (size-adjust from average glyph width — uppercase Archivo 800 vs Arial Bold, Manrope 500 vs Arial). */
+@font-face {
+  font-family: 'Archivo Fallback';
+  font-weight: 600 900;
+  src: local('Arial Bold'), local('Arial-BoldMT');
+  size-adjust: 103.84%;
+  ascent-override: 84.55%;
+  descent-override: 20.22%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Manrope Fallback';
+  font-weight: 400 550;
+  src: local('Arial'), local('ArialMT');
+  size-adjust: 105.52%;
+  ascent-override: 101.02%;
+  descent-override: 28.43%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Manrope Fallback';
+  font-weight: 551 800;
+  src: local('Arial Bold'), local('Arial-BoldMT');
+  size-adjust: 105.52%;
+  ascent-override: 101.02%;
+  descent-override: 28.43%;
+  line-gap-override: 0%;
+}
+
+:root {
+  /* colour */
+  --navy: #0b2a5b;          /* headings, primary buttons, footer */
+  --navy-2: #163f85;        /* hover / gradient end */
+  --navy-ink: #14284b;      /* body text */
+  --ink: #0b2a5b;
+  --blue: #2f6fc4;          /* accent line in the hero title, links, icons (≥ 4.5:1 on white) */
+  --link: #1f5fb4;
+  --sky: #cfe0f3;           /* hero gradient */
+  --mint: #4be38a;          /* circle arrows, small labels (always with navy text/icons) */
+  --mint-soft: #dcf8e8;
+  --text-2: #3b4f6e;        /* secondary text (≥ 7:1 on --bg) */
+  --text-3: #55698a;        /* tertiary text (≥ 5:1 on --bg) */
+  --bg: #f6f9fd;            /* page ground */
+  --bg-2: #eaf1f9;          /* alternate band */
+  --panel: #e4edf8;         /* photo panels */
+  --card: #ffffff;
+  --border: #dbe5f1;
+  --border-strong: #c5d3e4;
+  --success: #1a7f45;
+  --danger: #c4142b;
+  --white: #ffffff;
+  --hero-grad: linear-gradient(165deg, #b9d1ec 0%, #d4e4f5 38%, #e9f1fa 70%, #f6f9fd 100%);
+
+  /* glass surfaces */
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-border: rgba(255, 255, 255, 0.85);
+  --glass-blur: saturate(160%) blur(18px);
+  --shadow-soft: 0 10px 30px -18px rgba(20, 60, 120, 0.28);
+  --shadow-lift: 0 26px 50px -24px rgba(20, 60, 120, 0.42);
+
+  /* type */
+  --font-display: 'Archivo', 'Archivo Fallback', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Manrope', 'Manrope Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --fs-hero: clamp(2.5rem, 1.5rem + 3.4vw, 4.05rem);
+  --fs-d1: clamp(2.3rem, 1.4rem + 3.4vw, 4.2rem);
+  --fs-d2: clamp(1.8rem, 1.3rem + 1.9vw, 2.9rem);
+  --fs-d3: clamp(1.3rem, 1.1rem + 0.8vw, 1.75rem);
+  --fs-lead: clamp(1rem, 0.95rem + 0.3vw, 1.12rem);
+
+  /* shape & space */
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+  --r-pill: 999px;
+  --container: 1240px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --section-y: clamp(72px, 9vw, 120px);
+  --header-h: 72px;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
+}
