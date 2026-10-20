@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import { asset } from '../lib/base';
 import { useInView } from '../hooks/useInView';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 
@@ -112,11 +113,11 @@ export function SectionHead({ tag, title, accent, after, children, light }: { ta
 
 /* ---------- Responsive image ---------- */
 export function Photo({ name, widths, alt, sizes, className, eager }: { name: string; widths: number[]; alt: string; sizes: string; className?: string; eager?: boolean }) {
-  const srcSet = widths.map((w) => `/images/${name}-${w}.webp ${w}w`).join(', ');
+  const srcSet = widths.map((w) => `${asset(`images/${name}-${w}.webp`)} ${w}w`).join(', ');
   return (
     <picture>
       <source type="image/webp" srcSet={srcSet} sizes={sizes} />
-      <img src={`/images/${name}.jpg`} alt={alt} className={className} loading={eager ? 'eager' : 'lazy'} decoding="async" {...((eager ? { fetchpriority: 'high' } : {}) as Record<string, string>)} />
+      <img src={asset(`images/${name}.jpg`)} alt={alt} className={className} loading={eager ? 'eager' : 'lazy'} decoding="async" {...((eager ? { fetchpriority: 'high' } : {}) as Record<string, string>)} />
     </picture>
   );
 }

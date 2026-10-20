@@ -34,6 +34,8 @@ function setHead(html, { title, description, path: p }, file) {
     [/<link rel="canonical" href="[^"]*" \/>/, file === '404.html' ? '<meta name="robots" content="noindex" />' : `<link rel="canonical" href="${url}" />`],
   ];
   // the hero portrait preload only helps the home page's LCP
+  // preview builds (GitHub Pages) must not be indexed next to the real domain
+  if (process.env.NOINDEX) swaps.push([/<meta name="viewport"[^>]*>/, (m) => `${m}\n    <meta name="robots" content="noindex, nofollow" />`]);
   if (p !== '/') swaps.push([/\s*<!-- Above-the-fold portrait -->\s*<link rel="preload"[^>]*>/, '']);
   for (const [re, rep] of swaps) {
     if (!re.test(html)) throw new Error(`prerender: ${file}: head tag not found for ${re}`);
@@ -42,7 +44,10 @@ function setHead(html, { title, description, path: p }, file) {
   return html;
 }
 
-const template = await readFile(path.join(dist, 'index.html'), 'utf8');
+let template = await readFile(path.join(dist, 'index.html'), 'utf8');
+// Vite prefixes the base path onto href/src in index.html but not onto imagesrcset — do it here.
+const BASE = process.env.BASE_PATH || '/';
+if (BASE !== '/') template = template.replace(/imagesrcset="([^"]*)"/g, (_, v) => `imagesrcset="${v.replace(/(^|, )\/images\//g, `$1${BASE}images/`)}"`);
 if (!template.includes('<div id="root"></div>')) throw new Error('prerender: <div id="root"></div> not found in dist/index.html');
 const { render } = await import(path.join(ssrDir, 'entry-server.js'));
 

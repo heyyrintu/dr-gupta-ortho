@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { doctor, whatsappLink } from '../content/site';
 import { Button, Icon } from './ui';
+import { asset } from '../lib/base';
 
 const nav = [
   { to: '/', label: 'Home', end: true },
@@ -19,7 +20,7 @@ const nav = [
 function LogoMark() {
   return (
     <span className="logo__mark" aria-hidden="true">
-      <img src="/logo-mark.svg" alt="" width="30" height="29" decoding="async" />
+      <img src={asset('logo-mark.svg')} alt="" width="30" height="29" decoding="async" />
     </span>
   );
 }

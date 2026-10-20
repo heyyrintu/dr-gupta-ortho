@@ -18,6 +18,20 @@
         "preview"
       ],
       "port": 4173
+    },
+    {
+      "name": "preview-pages",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "vite",
+        "preview",
+        "--base",
+        "/dr-gupta-ortho/",
+        "--port",
+        "4180"
+      ],
+      "port": 4180,
+      "url": "http://localhost:4180"
     }
   ]
 }

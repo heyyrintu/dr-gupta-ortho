@@ -2,13 +2,14 @@ import { StrictMode } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import { BASENAME } from './lib/base';
 import './styles/tokens.css';
 import './styles/global.css';
 
 const root = document.getElementById('root')!;
 const app = (
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={BASENAME}>
       <App />
     </BrowserRouter>
   </StrictMode>

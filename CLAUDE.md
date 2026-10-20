@@ -177,6 +177,13 @@ give it a new filename (e.g. `knee-model.v2.json`) and update its references, or
 HTML routes are `max-age=0, must-revalidate`, listed one by one (Netlify/Cloudflare join overlapping rules, so there's no `/*`);
 a new route needs adding to both header configs too.
 
+**GitHub Pages preview**: `.github/workflows/pages.yml` builds on every push to `main` with `BASE_PATH=/<repo>/` and
+`NOINDEX=1` and publishes to `https://<owner>.github.io/<repo>/`. The same code runs at the root or under a sub-path:
+`vite.config.ts` reads `BASE_PATH`, the router uses `BASENAME` (`src/lib/base.ts`), and every hard-coded `public/` file
+goes through `asset()` — use it for any new image/model/logo path, or it will 404 on the preview. `NOINDEX` adds
+`robots noindex` to every page so the preview never competes with the real domain. Local check: build with those
+env vars, then the `preview-pages` config in `.claude/launch.json` (port 4180, `/dr-gupta-ortho/`).
+
 ## Roadmap (phase 2 — the Dr. Gupta healthcare platform)
 - Replace the WhatsApp booking hand-off in `pages/Book.tsx` with the platform's appointments API
   (real OPD slots per location; payments via **Cashfree**). Keep the same 3-step UI.

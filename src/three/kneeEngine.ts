@@ -14,6 +14,7 @@
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { createBoneDust, createRobotArm, createTracker, rigMaterials } from './surgicalRig';
+import { asset } from '../lib/base';
 
 export type KneeMode = 'hero' | 'story';
 
@@ -28,7 +29,7 @@ export type KneeModel = {
 };
 
 let modelPromise: Promise<KneeModel> | null = null;
-export function loadKneeModel(url = '/models/knee-model.json'): Promise<KneeModel> {
+export function loadKneeModel(url = asset('models/knee-model.json')): Promise<KneeModel> {
   if (!modelPromise) modelPromise = fetch(url).then((r) => {
     if (!r.ok) throw new Error(`knee model ${r.status}`);
     return r.json() as Promise<KneeModel>;

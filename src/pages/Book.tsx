@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Seo from '../components/Seo';
+import { asset } from '../lib/base';
 import { areas, doctor, locations, opdLabel, pages, whatsappLink } from '../content/site';
 
 const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -171,7 +172,7 @@ export default function Book() {
               <div className="book-summary__body">
                 <span className="book-summary__label">Your appointment</span>
                 <div className="book-summary__doc">
-                  <img src="/images/portrait-scrubs-120.webp" alt="" width="52" height="52" />
+                  <img src={asset('images/portrait-scrubs-120.webp')} alt="" width="52" height="52" />
                   <span><strong>{doctor.name}</strong><small>{doctor.shortTitle}</small></span>
                 </div>
                 <dl>
