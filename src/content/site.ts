@@ -134,19 +134,15 @@ export const robotSystems = [
 /** Home page copy. Plain, factual wording — no superlatives (NMC advertising norms). */
 export const home = {
   hero: {
-    tag: 'Robotic joint replacement',
-    /** big uppercase display lines (the H1 reads them as one sentence) */
-    display: ['Robotic', 'Knee & Hip', 'Replacement'],
     eyebrow: 'Consultant Orthopaedic Surgeon · Kolkata & Howrah',
-    title: 'Robotic knee and hip replacement, and complete orthopaedic care',
+    /** the H1 reads as one sentence; the second part is set in the accent colour */
+    title: 'Robotic knee and hip replacement,',
+    titleAccent: 'and complete orthopaedic care.',
     lead: 'consultant orthopaedic surgeon for joint replacement, sports injuries, spine and trauma, consulting at seven hospitals and clinics in Kolkata & Howrah.',
     robots: 'Trained on MAKO, VELYS and CUVIS robotic systems.',
-    credentials: ['MS (Orthopaedics)', 'APOA-SIAA Arthroplasty Fellowship', "King's College Hospital NHS, UK", 'WBMC Reg. No. 69329'],
-    photoCaption: 'Dr. Siddharth Gupta, MBBS, MS (Orthopaedics)',
-    /** stat chips on the hero portrait — real figures only (stats are carried over from the old site, TODO confirm) */
-    chipRobots: { k: 'Robotic systems', v: 'MAKO · VELYS · CUVIS' },
+    credentials: ['MS (Orthopaedics)', 'APOA-SIAA Arthroplasty Fellowship', "King's College Hospital NHS, UK", 'MAKO · VELYS · CUVIS trained'],
   },
-  services: { eyebrow: 'Treatments', title: 'Care for every joint', intro: 'From sports injuries to complete joint replacement — choose an area to see conditions and treatment options.' },
+  services: { eyebrow: 'Areas of practice', title: 'From sports injury to joint replacement', intro: 'Choose an area to see common conditions, when to see a specialist, and the treatment options.' },
   about: {
     eyebrow: 'About Dr. Gupta',
     overlay: { k: 'Trained at', v: "King's College Hospital NHS, UK", note: 'Arthroplasty & arthroscopy' },
@@ -165,7 +161,7 @@ export const pages = {
   about: {
     eyebrow: 'About · Consultant Orthopaedic Surgeon',
     lead: 'Consultant orthopaedic surgeon in Kolkata and Howrah — robotic joint replacement, sports injuries and arthroscopy, trauma, and spine and deformity correction.',
-    photoCaption: 'Dr. Siddharth Gupta, MBBS, MS (Orthopaedics)',
+    photoCaption: 'MBBS, MS (Orthopaedics) · Consultant Orthopaedic Surgeon',
     training: { eyebrow: 'Training', title: 'Trained across India, the United Kingdom and Spain' },
     hospitals: { eyebrow: 'Hospitals', title: 'Consultant at' },
     memberships: { eyebrow: 'Memberships', title: 'Professional societies' },

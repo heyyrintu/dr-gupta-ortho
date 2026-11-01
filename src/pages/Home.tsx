@@ -11,10 +11,10 @@ export default function Home() {
         description="Consultant orthopaedic surgeon in Kolkata & Howrah for robotic knee and hip replacement (MAKO, VELYS, CUVIS), sports injuries, arthroscopy, spine and trauma. Book an OPD appointment."
       />
       <Hero />
+      <StatsBand />
       <Services />
       <KneeStory />
       <AboutTeaser />
-      <StatsBand />
       <ConditionExplorer />
       <LocationsStrip />
       <Reviews />

@@ -19,7 +19,7 @@ export default function About() {
       <section className="page-hero">
         <div className="container page-hero__grid">
           <div className="page-hero__copy in">
-            <span className="chip-green">{a.eyebrow}</span>
+            <span className="kicker">{a.eyebrow}</span>
             <h1 className="display-1">{doctor.name}</h1>
             <p className="lead">{a.lead}</p>
             <div className="hero__ctas">
@@ -30,15 +30,18 @@ export default function About() {
             </div>
             <ul className="hero__creds">
               {creds.map((c) => (
-                <li key={c}><Icon name="check" size={15} stroke={2.4} />{c}</li>
+                <li key={c}>{c}</li>
               ))}
             </ul>
           </div>
-          <figure className="page-hero__panel in d2">
-            <div className="page-hero__frame page-hero__frame--portrait">
-              <Photo name="portrait-suit" widths={[480, 600, 700, 900]} sizes="(max-width: 900px) 92vw, 520px" alt="Portrait of Dr. Siddharth Gupta" className="cover cover--top" eager />
+          <figure className="portrait portrait--cutout in d2">
+            <div className="portrait__frame">
+              <Photo name="portrait-scrubs" widths={[640, 1000]} sizes="(max-width: 640px) 88vw, 460px" alt="Dr. Siddharth Gupta in surgical scrubs" className="portrait__cutout" eager />
             </div>
-            <figcaption>{a.photoCaption}</figcaption>
+            <figcaption className="portrait__cap">
+              <strong>{doctor.name}</strong>
+              <span>{a.photoCaption}</span>
+            </figcaption>
           </figure>
         </div>
       </section>

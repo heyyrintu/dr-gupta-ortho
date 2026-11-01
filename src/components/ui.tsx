@@ -24,7 +24,7 @@ const paths: Record<IconName, ReactNode> = {
   shield: <path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3z" />,
   star: <path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9L12 3z" />,
 };
-export function Icon({ name, size = 18, stroke = 2.2, className }: { name: IconName; size?: number; stroke?: number; className?: string }) {
+export function Icon({ name, size = 18, stroke = 1.6, className }: { name: IconName; size?: number; stroke?: number; className?: string }) {
   return (
     <svg aria-hidden="true" className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={stroke} strokeLinecap="round" strokeLinejoin="round">
       {paths[name]}
@@ -35,15 +35,11 @@ export function Icon({ name, size = 18, stroke = 2.2, className }: { name: IconN
 /* ---------- Buttons ---------- */
 type BtnProps = { to?: string; href?: string; children: ReactNode; variant?: 'primary' | 'light' | 'ghost' | 'ghostDark'; arrow?: boolean; className?: string; onClick?: () => void };
 export function Button({ to, href, children, variant = 'primary', arrow = true, className = '', onClick }: BtnProps) {
-  const cls = `btn btn--${variant} ${arrow ? 'btn--arrow' : ''} ${className}`; // arrow = trailing circle with ↗
+  const cls = `btn btn--${variant} ${arrow ? 'btn--arrow' : ''} ${className}`; // arrow = thin → that slides on hover
   const inner = (
     <>
       <span>{children}</span>
-      {arrow && (
-        <span className="btn__go" aria-hidden="true">
-          <Icon name="arrowUpRight" size={16} stroke={2.4} />
-        </span>
-      )}
+      {arrow && <Icon name="arrowRight" size={16} className="btn__go" />}
     </>
   );
   if (to) return <Link to={to} className={cls} onClick={onClick}>{inner}</Link>;
@@ -100,7 +96,7 @@ export function SectionHead({ tag, title, accent, after, children, light }: { ta
   return (
     <Reveal className={`section-head ${light ? 'section-head--light' : ''}`}>
       <div className="section-head__text">
-        {tag && <span className="chip-green">{tag}</span>}
+        {tag && <span className="kicker">{tag}</span>}
         <h2 className="display-2">
           {title} {accent && <span className="accent">{accent}</span>}
           {after}
@@ -123,7 +119,7 @@ export function Photo({ name, widths, alt, sizes, className, eager }: { name: st
 }
 
 /* ---------- Segmented control (tablist) ----------
- * Apple-style pill track with a thumb that slides to the active segment. Before the thumb is
+ * Underline tabs: a thin brass bar slides under the active segment. Before the thumb is
  * measured (prerendered HTML, no JS) the active segment paints its own background instead.
  * Arrow keys / Home / End move between segments (WAI-ARIA tabs pattern). */
 export function Segmented({ items, value, onChange, label, idPrefix, controls }: { items: { id: string; label: string }[]; value: number; onChange: (i: number) => void; label: string; idPrefix: string; controls?: string }) {
@@ -177,7 +173,7 @@ export function Segmented({ items, value, onChange, label, idPrefix, controls }:
 }
 
 /* ---------- Carousel ----------
- * Native horizontal scroll with snap points; the round buttons page by ~one viewport of cards
+ * Native horizontal scroll with snap points; the square buttons page by ~one viewport of cards
  * and disable at either end. Works with touch, trackpad, keyboard (track is focusable) and no JS. */
 export function Carousel({ children, label, className = '' }: { children: ReactNode[]; label: string; className?: string }) {
   const track = useRef<HTMLUListElement>(null);
@@ -202,16 +198,16 @@ export function Carousel({ children, label, className = '' }: { children: ReactN
         {children.map((c, i) => <li key={i} className="carousel__item">{c}</li>)}
       </ul>
       <div className="carousel__nav">
-        <button type="button" className="round-btn" aria-label="Previous" disabled={edge.start} onClick={() => page(-1)}><Icon name="chevronLeft" size={18} stroke={2.4} /></button>
-        <button type="button" className="round-btn" aria-label="Next" disabled={edge.end} onClick={() => page(1)}><Icon name="chevronRight" size={18} stroke={2.4} /></button>
+        <button type="button" className="round-btn" aria-label="Previous" disabled={edge.start} onClick={() => page(-1)}><Icon name="arrowRight" size={18} className="flip" /></button>
+        <button type="button" className="round-btn" aria-label="Next" disabled={edge.end} onClick={() => page(1)}><Icon name="arrowRight" size={18} /></button>
       </div>
     </div>
   );
 }
 
-/* ---------- Chevron text link ("Learn more ›") ---------- */
+/* ---------- Arrow text link ("Learn more →") ---------- */
 export function MoreLink({ to, href, children }: { to?: string; href?: string; children: ReactNode }) {
-  const inner = <>{children}<Icon name="chevronRight" size={15} stroke={2.4} /></>;
+  const inner = <>{children}<Icon name="arrowRight" size={15} /></>;
   if (to) return <Link to={to} className="more-link">{inner}</Link>;
   return <a href={href} className="more-link" {...(href?.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}>{inner}</a>;
 }
