@@ -8,7 +8,7 @@ export default function NotFound() {
     <section className="notfound">
       <Seo path="/404" title="Page not found | Dr. Siddharth Gupta" description="This page could not be found." />
       <div className="container notfound__inner in">
-        <span className="chip-green">{n.eyebrow}</span>
+        <span className="kicker">{n.eyebrow}</span>
         <h1 className="display-1">{n.title}</h1>
         <p className="lead">{n.body}</p>
         <div className="row-gap">

@@ -27,7 +27,7 @@ export default function Robotic() {
         <div className="container page-hero__grid">
           <div className="page-hero__copy in">
             <nav aria-label="Breadcrumb" className="crumbs"><Link to="/">Home</Link><span aria-hidden="true">/</span><span aria-current="page">Robotic joint replacement</span></nav>
-            <span className="chip-green">{r.eyebrow}</span>
+            <span className="kicker">{r.eyebrow}</span>
             <h1 className="display-1">{r.title}</h1>
             <p className="lead">{r.lead}</p>
             <div className="hero__ctas">
@@ -44,9 +44,9 @@ export default function Robotic() {
         </div>
         <div className="container">
           <ul className="points">
-            {r.plan.map((p) => (
+            {r.plan.map((p, i) => (
               <li key={p.t} className="points__item">
-                <span className="points__ic"><Icon name="check" size={14} stroke={2.6} /></span>
+                <span className="points__ic">{String(i + 1).padStart(2, '0')}</span>
                 <span><strong>{p.t}</strong>{p.b}</span>
               </li>
             ))}

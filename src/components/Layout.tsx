@@ -13,8 +13,8 @@ const nav = [
 ];
 
 /**
- * Logo mark: Dr. Gupta's original caduceus emblem (teal, from his previous website's logo) on a white
- * rounded tile. The name beside it is real text, so search engines and screen readers read it; the image
+ * Logo mark: Dr. Gupta's original caduceus emblem (teal, from his previous website's logo), set inside a
+ * thin square keyline. The name beside it is real text, so search engines and screen readers read it; the image
  * itself is decorative here (alt=""). /logo-512.png is the same emblem for structured data and icons.
  */
 function LogoMark() {
@@ -78,7 +78,7 @@ function Header() {
           )}
         </nav>
         <a href={doctor.phonePrimaryHref} className="site-header__phone"><Icon name="phone" size={15} />{doctor.phonePrimary}</a>
-        <Button to="/book" variant="ghost" className="site-header__cta">Book appointment</Button>
+        <Button to="/book" arrow={false} className="site-header__cta btn--sm">Book appointment</Button>
         <button className={`site-header__menu ${open ? 'is-open' : ''}`} aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen((o) => !o)}>
           <span className="burger" aria-hidden="true"><span /><span /></span>
         </button>

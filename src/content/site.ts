@@ -134,25 +134,33 @@ export const robotSystems = [
 /** Home page copy. Plain, factual wording — no superlatives (NMC advertising norms). */
 export const home = {
   hero: {
-    tag: 'Robotic joint replacement',
-    /** big uppercase display lines (the H1 reads them as one sentence) */
-    display: ['Robotic', 'Knee & Hip', 'Replacement'],
     eyebrow: 'Consultant Orthopaedic Surgeon · Kolkata & Howrah',
-    title: 'Robotic knee and hip replacement, and complete orthopaedic care',
+    /** the H1 reads as one sentence; the second part is set in the accent colour */
+    title: 'Robotic knee and hip replacement,',
+    titleAccent: 'and complete orthopaedic care.',
     lead: 'consultant orthopaedic surgeon for joint replacement, sports injuries, spine and trauma, consulting at seven hospitals and clinics in Kolkata & Howrah.',
     robots: 'Trained on MAKO, VELYS and CUVIS robotic systems.',
-    credentials: ['MS (Orthopaedics)', 'APOA-SIAA Arthroplasty Fellowship', "King's College Hospital NHS, UK", 'WBMC Reg. No. 69329'],
-    photoCaption: 'Dr. Siddharth Gupta, MBBS, MS (Orthopaedics)',
-    /** stat chips on the hero portrait — real figures only (stats are carried over from the old site, TODO confirm) */
-    chipRobots: { k: 'Robotic systems', v: 'MAKO · VELYS · CUVIS' },
+    credentials: ['MS (Orthopaedics)', 'APOA-SIAA Arthroplasty Fellowship', "King's College Hospital NHS, UK", 'MAKO · VELYS · CUVIS trained'],
   },
-  services: { eyebrow: 'Treatments', title: 'Care for every joint', intro: 'From sports injuries to complete joint replacement — choose an area to see conditions and treatment options.' },
+  services: { eyebrow: 'Areas of practice', title: 'From sports injury to joint replacement', intro: 'Choose an area to see common conditions, when to see a specialist, and the treatment options.' },
   about: {
     eyebrow: 'About Dr. Gupta',
     overlay: { k: 'Trained at', v: "King's College Hospital NHS, UK", note: 'Arthroplasty & arthroscopy' },
     questions: 'For any questions',
     title: 'Trained in India, the United Kingdom and Spain. Practising in Kolkata.',
     body: "Arthroplasty fellowship across Hyderabad, Bangalore, Chennai and Coimbatore; arthroplasty and arthroscopy at King's College Hospital NHS, UK; advanced arthroscopy in Barcelona. Today a consultant at ILS Hospitals, AMRI, Belle Vue Clinic and Kothari Medical Centre.",
+  },
+  /** "Approach" section. Every line is reused from copy already on the site (Robotic page, CTA band) —
+   * TODO: confirm the wording with Dr. Gupta before launch. */
+  approach: {
+    eyebrow: 'Approach',
+    title: 'Not every painful joint needs an operation.',
+    intro: "Most consultations end with a plan that doesn't involve an operation.",
+    items: [
+      { t: 'Surgery is the last step, not the first', b: 'Replacement is considered only after medicines, physiotherapy and injections stop helping. Dr. Gupta decides after examining you and reviewing your imaging.' },
+      { t: 'Planned to your anatomy', b: 'A 3D model of your joint guides implant size and position before surgery.' },
+      { t: 'The surgeon stays in control', b: 'Dr. Gupta performs every step; the robotic arm keeps each cut within the planned boundary.' },
+    ],
   },
   conditions: { eyebrow: 'Conditions & treatments', title: 'Conditions we treat', intro: 'Choose an area to see common conditions, when to see a specialist, and the treatment options — most of which do not involve surgery.' },
   locations: { eyebrow: 'Where to consult', title: 'Seven hospitals and clinics in Kolkata & Howrah' },
@@ -165,7 +173,7 @@ export const pages = {
   about: {
     eyebrow: 'About · Consultant Orthopaedic Surgeon',
     lead: 'Consultant orthopaedic surgeon in Kolkata and Howrah — robotic joint replacement, sports injuries and arthroscopy, trauma, and spine and deformity correction.',
-    photoCaption: 'Dr. Siddharth Gupta, MBBS, MS (Orthopaedics)',
+    photoCaption: 'MBBS, MS (Orthopaedics) · Consultant Orthopaedic Surgeon',
     training: { eyebrow: 'Training', title: 'Trained across India, the United Kingdom and Spain' },
     hospitals: { eyebrow: 'Hospitals', title: 'Consultant at' },
     memberships: { eyebrow: 'Memberships', title: 'Professional societies' },

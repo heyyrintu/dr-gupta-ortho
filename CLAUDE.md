@@ -31,7 +31,7 @@ Always run `npm run build` before declaring work done — it must pass with zero
 
 ## Structure
 ```
-index.html                 SEO meta, OG tags, JSON-LD Physician schema, font preloads (self-hosted Archivo + Manrope
+index.html                 SEO meta, OG tags, JSON-LD Physician schema, font preloads (self-hosted Fraunces + Manrope
                            variable woff2 in public/fonts/, @font-face + metric fallbacks in tokens.css, OFL in licenses/)
 public/
   models/knee-model.json   3D knee (base64 Int16 positions + baked AO per part, see below)
@@ -44,17 +44,16 @@ src/
   main.tsx                 browser entry: hydrates prerendered HTML (createRoot in dev)
   entry-server.tsx         build-only SSR entry used by scripts/prerender.mjs
   content/site.ts          ★ ALL copy & practice data (doctor, locations, stats, FAQs, reviews…)
-  components/Layout.tsx    transparent→frosted header (pill nav, phone, Book pill + full-screen mobile menu), navy footer, floating glass action bar
+  components/Layout.tsx    transparent→ivory header (text nav with brass underline, phone, Book button + full-screen mobile menu), navy footer, docked action bar on phones
   components/ui.tsx        Icon, Button, Reveal, CountUp, SectionHead, Photo, Segmented, Carousel, MoreLink
   components/LocalNav.tsx  sticky in-page section bar with scroll-spy (Robotic page)
-  components/JointArt.tsx  SVG "glass" joint illustrations for treatment cards
   components/Seo.tsx       per-route title/description/canonical/OG
   three/kneeEngine.ts      ★ the 3D scene: materials, lighting, stage animation logic
   three/surgicalRig.ts     robot arm + saw, navigation trackers, bone dust (story props)
   three/KneeCanvas.tsx     React wrapper: lazy import, model fetch, pause off-screen, fallback
   hooks/                   useScrollProgress (pinned section 0→1, smoothed), useInView, useReducedMotion
   sections/KneeStory.tsx   pinned scroll story (used on Home + Robotic page)
-  sections/HomeSections.tsx Hero, Services, AboutTeaser, StatsBand, ConditionExplorer, LocationsStrip, Reviews, Cases, CtaBand
+  sections/HomeSections.tsx Hero, StatsBand, Services, AboutTeaser, ConditionExplorer, LocationsStrip, Reviews, Cases, CtaBand
                            (+ shared Head, LocationList used by inner pages)
   pages/                   Home, Robotic, About, Book, NotFound
 docs/BUILD_SPEC.md         design spec + acceptance criteria (read before UI changes)
@@ -72,48 +71,50 @@ docs/CONTENT_TODO.md       facts that must be confirmed by the clinic before lau
 - Real photos of Dr. Gupta are in `public/images/` (sourced from his existing website).
 
 ## Design system (see tokens.css)
-"Clinical glass" — modelled on a modern medical landing page the owner supplied as reference: sky-blue
-gradient hero, frosted white cards, bold uppercase headings, navy + mint accents, 3D-style visuals.
-- Type: **Archivo** 800–900 UPPERCASE for `.display-1/.display-2` and the hero title (`--fs-hero`);
-  `.display-3` and card titles in sentence case; body **Manrope**.
-- Colour: page `--bg #f6f9fd`, bands `--bg-2`, hero/page-hero `--hero-grad` (sky blue → white). Navy
-  `#0b2a5b` headings, primary buttons, footer, selected states; `--blue #2f6fc4` for the accent line in the
-  hero title; **mint `#4be38a` only as a fill behind navy text/icons** (circle arrows, `.chip-green` pill
-  labels, list dots, the active local-nav link, the selected-location check) — never mint text on white.
-- Buttons: pill; `arrow` (default on) = a trailing circle with ↗ that rotates on hover — white circle on
-  navy buttons, mint circle on white ones. `.circle-btn` = 50px round icon button (WhatsApp in the hero).
-- Surfaces: frosted glass cards (`.glass`, `.glass-card`, `.float-card`, `.svc__btn`) over gradients;
-  solid white cards with soft blue shadows elsewhere. Radii 16–32px, pills for controls.
-- Home hero: tag chip, 3-line uppercase title with a small `JointArt` knee glyph, lead, CTAs, credential
-  pills; media = **only the arched portrait** (`.arch`, with an offset glass panel behind it) and three static
-  `.float-card` chips (joint replacements, MS + fellowship, MAKO · VELYS · CUVIS) placed clear of the face.
-  Stat chips show real data only (`stats`, `doctor`) — never the reference's made-up numbers. No 3D bone here.
+"Editorial private practice" — the client found the earlier "clinical glass" look (sky-blue gradients, frosted
+cards, uppercase Archivo, mint pills) not classy enough. Now: the restraint of a private consultant's practice —
+warm ivory ground, deep navy ink, a muted brass accent, serif display type, hairline rules instead of shadows and
+glass, real photography instead of 3D-style icons. It is direction A of `docs/design-demo/`.
+- Type: **Fraunces** (variable, opsz + wght, light ~360–420) for `.display-1/2/3`, the hero title, card titles,
+  numerals and the wordmark — always sentence case, never bold or uppercase; body **Manrope**. Small labels
+  (`.kicker`, list headings, dt) are 0.7rem uppercase tracked 0.14–0.16em.
+- Colour: page `--bg #f7f4ee`, bands `--bg-2 #efe9df`, surfaces `--card #fffdf9`. `--ink #14213d` headings,
+  primary buttons, selected states; `--dark #0e1830` CTA band + footer. **`--brass #b0915f` is decorative only**
+  (rules, underlines, keylines, list dashes); brass as text uses `--brass-text #7a5c34` (numerals, `.kicker`,
+  `.accent` — the second half of the hero title). On dark: `--on-dark`, `--on-dark-2`, `--on-dark-accent`.
+  Every text pair is in `scripts/check-contrast.mjs` (`npm run check`).
+- Buttons: near-square (2px radius), 52px tall. `arrow` (default on) = a thin → that slides 4px on hover.
+  Variants: `primary` (ink), `ghost` (1px ink outline, fills on hover), `light` / `ghostDark` on dark bands.
+- Surfaces: no glass, no gradients, no drop shadows. Sections are separated by band colour; content by 1px
+  `--rule` hairlines under a stronger `--rule-strong` top rule (lists, ledgers, the stats strip, the services
+  index). Cards (`.cond`, `.review`, `.case-card`, `.book-card`) are `--card` with a 1px `--rule` border.
+- Home: hero (kicker, serif H1 `home.hero.title` + accent `titleAccent`, lead, Book + WhatsApp buttons, call
+  link, 2×2 credential list) beside a **framed portrait** (`.portrait`: the suit photo at 4:5 with a thin brass
+  keyline offset behind it and a caption with qualifications + registration). On phones the hero copy is
+  `display: contents` so the portrait sits right after the headline. Then a hairline stats strip (real data only,
+  `stats`), the numbered "areas of practice" index (`Services`), the knee story, about teaser (framed theatre
+  photo + training ledger), an "Approach" section (`home.approach`: three numbered principles reusing copy
+  already on the site — TODO confirm wording), conditions, locations, reviews, case studies, CTA.
 - Logo (`LogoMark` in `components/Layout.tsx`): Dr. Gupta's **original teal caduceus emblem** from his old website
-  (`public/logo-mark.svg`, extracted from his old 250×60 logo SVG with the outlined lettering removed) on a white rounded
-  tile; wordmark = real text (name in Archivo 800 + `doctor.shortTitle` in small uppercase blue, mint in the navy footer)
+  (`public/logo-mark.svg`, extracted from his old 250×60 logo SVG with the outlined lettering removed) in a thin
+  square keyline; wordmark = real text (name in Fraunces + `doctor.shortTitle` in small uppercase brass)
   so it stays crawlable — the mark itself is `alt=""`. Same emblem: `favicon.svg`, `favicon-32.png`,
   `apple-touch-icon.png`, `icon-192.png`, `logo-512.png` (JSON-LD `logo`), `site.webmanifest`.
-- `components/JointArt.tsx` draws the animated "glass" joint illustrations (knee, hip, shoulder, sports,
-  spine, fractures) used on the treatment cards, the conditions panel and the hero title — SVG, no image
-  assets. Each part is its own `.ja-part` group (CSS block "Joint art" in global.css): parts spring in one by
-  one (paused until the parent `<Reveal>` is in view); on card hover the joint moves like the real one
-  (knee flexes, hip swings, shoulder abducts, spine ripples, fracture halves knit + crack fades, sports
-  ligaments turn green) and a light band sweeps across; idle = slow `ja-float` drift (the one deliberate
-  loop). Small UI icons have one-shot micro-animations (lines draw in, phone rings, pin drops). Joint
-  motion uses view-box `transform-origin`s — keep them in sync if you edit the shapes.
-- Treatment cards (`Services`) overlap the hero edge; clicking one dispatches a `select-area` window event
-  that `ConditionExplorer` listens for, then scrolls to `#conditions`.
-- Interactive pieces: `Segmented` (navy sliding thumb), `Carousel`, `MoreLink`, `LocalNav` (Robotic page),
-  full-screen mobile menu, floating-label booking fields, animated FAQ `<details>` — see `components/ui.tsx`.
-  A backdrop-filter makes an element the containing block for fixed children, which is why
-  `.site-header.is-open` drops it (the mobile sheet is `position: fixed` inside the header).
-- Motion: fade-up on load/scroll, hover lifts, circle arrows rotate, cards scale on press. Float cards are
-  static; the only loop is the slow joint-art drift. Everything respects `prefers-reduced-motion`.
-- Contrast: hero title is navy/blue on the pale gradient (not white). `--text-3` is the lightest text.
+- Numbering is the ornament: `01`–`06` in brass-text Fraunces on the services index, locations, story steps,
+  Robotic points and booking steps. No illustrations (the old `JointArt` glass icons were removed).
+- Treatment cells (`Services`) dispatch a `select-area` window event that `ConditionExplorer` listens for, then
+  scroll to `#conditions`.
+- Interactive pieces: `Segmented` (underline tabs, a 2px brass bar slides under the active one), `Carousel`
+  (square outline buttons), `MoreLink` (text + brass underline + →), `LocalNav` (Robotic page), full-screen
+  mobile menu (serif links), floating-label booking fields, animated FAQ `<details>` — see `components/ui.tsx`.
+  The header has no backdrop-filter (it would make the header the containing block for the fixed mobile sheet).
+- Motion: slow fade-up on load/scroll, nav underlines draw in, arrows slide, photos zoom 4% on hover. No loops,
+  no bounces. Everything respects `prefers-reduced-motion`.
 - Touch targets ≥ 44px. Real `<button>`/`<a>`/`<input>`; radio-card pickers are real radios.
 - Home copy lives in `content/site.ts → home`; About / Robotic / Book / 404 copy in `content/site.ts → pages`.
-- Inner pages: gradient `.page-hero` (About portrait is arched), `section-band` / `section-band--tint`,
-  `Head` + `LocationList` from `sections/HomeSections.tsx`, `.split`, white grouped lists.
+- Inner pages: ivory `.page-hero` (About uses the scrubs cut-out on a warm panel, `.portrait--cutout`),
+  `section-band` / `section-band--tint`, `Head` + `LocationList` from `sections/HomeSections.tsx`, `.split`,
+  hairline grouped lists.
 
 ## The 3D knee
 - Source meshes: **BodyParts3D 3.0, 95% polygon reduction** (© DBCLS, CC BY 4.0) — the most detailed

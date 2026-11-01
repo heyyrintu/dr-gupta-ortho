@@ -86,7 +86,7 @@ export default function Book() {
       <section className="book-hero">
         <div className="container book-hero__inner">
           <div className="book-hero__copy in">
-            <span className="chip-green">{pages.book.eyebrow}</span>
+            <span className="kicker">{pages.book.eyebrow}</span>
             <h1 className="display-1">{pages.book.title}</h1>
             <p className="lead">{pages.book.lead}</p>
           </div>
