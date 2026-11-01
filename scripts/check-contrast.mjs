@@ -45,6 +45,21 @@ export const CHECKS = [
   },
 ];
 
+/* Design-options demo (docs/design-demo): the same semantic pairs for each direction. */
+const DEMO_PAIRS = [
+  ['--ink', '--ground', 'text'], ['--ink', '--band', 'text'], ['--ink', '--surface', 'text'],
+  ['--text-2', '--ground', 'text'], ['--text-2', '--band', 'text'], ['--text-2', '--surface', 'text'],
+  ['--text-3', '--ground', 'text'], ['--text-3', '--band', 'text'], ['--text-3', '--surface', 'text'],
+  ['--accent-text', '--ground', 'text'], ['--accent-text', '--band', 'text'], ['--accent-text', '--surface', 'text'],
+  ['--btn-ink', '--btn-bg', 'text'], ['--btn-ink', '--btn-bg-hover', 'text'],
+  ['--cta-ink', '--cta-bg', 'text'], ['--cta-text-2', '--cta-bg', 'text'], ['--cta-btn-ink', '--cta-btn-bg', 'text'],
+  ['--foot-ink', '--foot-bg', 'text'], ['--foot-text-2', '--foot-bg', 'text'], ['--foot-accent', '--foot-bg', 'text'],
+  ['--focus', '--ground', 'ui'], ['--focus', '--band', 'ui'],
+];
+for (const d of ['editorial', 'clinical', 'dark']) {
+  CHECKS.push({ label: `demo · ${d}`, file: 'docs/design-demo/src/demo.css', inherit: [':root'], scope: `[data-direction="${d}"]`, pairs: DEMO_PAIRS });
+}
+
 /* ---------------- CSS parsing ---------------- */
 const norm = (s) => s.replace(/\s+/g, ' ').replace(/'/g, '"').trim();
 
