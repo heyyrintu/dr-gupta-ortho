@@ -150,6 +150,18 @@ export const home = {
     title: 'Trained in India, the United Kingdom and Spain. Practising in Kolkata.',
     body: "Arthroplasty fellowship across Hyderabad, Bangalore, Chennai and Coimbatore; arthroplasty and arthroscopy at King's College Hospital NHS, UK; advanced arthroscopy in Barcelona. Today a consultant at ILS Hospitals, AMRI, Belle Vue Clinic and Kothari Medical Centre.",
   },
+  /** "Approach" section. Every line is reused from copy already on the site (Robotic page, CTA band) —
+   * TODO: confirm the wording with Dr. Gupta before launch. */
+  approach: {
+    eyebrow: 'Approach',
+    title: 'Not every painful joint needs an operation.',
+    intro: "Most consultations end with a plan that doesn't involve an operation.",
+    items: [
+      { t: 'Surgery is the last step, not the first', b: 'Replacement is considered only after medicines, physiotherapy and injections stop helping. Dr. Gupta decides after examining you and reviewing your imaging.' },
+      { t: 'Planned to your anatomy', b: 'A 3D model of your joint guides implant size and position before surgery.' },
+      { t: 'The surgeon stays in control', b: 'Dr. Gupta performs every step; the robotic arm keeps each cut within the planned boundary.' },
+    ],
+  },
   conditions: { eyebrow: 'Conditions & treatments', title: 'Conditions we treat', intro: 'Choose an area to see common conditions, when to see a specialist, and the treatment options — most of which do not involve surgery.' },
   locations: { eyebrow: 'Where to consult', title: 'Seven hospitals and clinics in Kolkata & Howrah' },
   reviews: { eyebrow: 'Patient reviews', title: 'What patients say', empty: 'Patients across Kolkata & Howrah have shared their experience of treatment with Dr. Gupta on Google.' },

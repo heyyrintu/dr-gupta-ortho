@@ -93,7 +93,8 @@ glass, real photography instead of 3D-style icons. It is direction A of `docs/de
   keyline offset behind it and a caption with qualifications + registration). On phones the hero copy is
   `display: contents` so the portrait sits right after the headline. Then a hairline stats strip (real data only,
   `stats`), the numbered "areas of practice" index (`Services`), the knee story, about teaser (framed theatre
-  photo + training ledger), conditions, locations, reviews, case studies, CTA.
+  photo + training ledger), an "Approach" section (`home.approach`: three numbered principles reusing copy
+  already on the site — TODO confirm wording), conditions, locations, reviews, case studies, CTA.
 - Logo (`LogoMark` in `components/Layout.tsx`): Dr. Gupta's **original teal caduceus emblem** from his old website
   (`public/logo-mark.svg`, extracted from his old 250×60 logo SVG with the outlined lettering removed) in a thin
   square keyline; wordmark = real text (name in Fraunces + `doctor.shortTitle` in small uppercase brass)

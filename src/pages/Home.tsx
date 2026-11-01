@@ -1,6 +1,6 @@
 import Seo from '../components/Seo';
 import KneeStory from '../sections/KneeStory';
-import { AboutTeaser, Cases, ConditionExplorer, CtaBand, Hero, LocationsStrip, Reviews, Services, StatsBand } from '../sections/HomeSections';
+import { AboutTeaser, Approach, Cases, ConditionExplorer, CtaBand, Hero, LocationsStrip, Reviews, Services, StatsBand } from '../sections/HomeSections';
 
 export default function Home() {
   return (
@@ -15,6 +15,7 @@ export default function Home() {
       <Services />
       <KneeStory />
       <AboutTeaser />
+      <Approach />
       <ConditionExplorer />
       <LocationsStrip />
       <Reviews />

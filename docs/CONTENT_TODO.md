@@ -26,3 +26,5 @@ The site works without these, but they are what patients look for first.
 ## Compliance check
 - [ ] Review all copy against NMC guidelines on medical advertising (no superlatives, no outcome guarantees)
 - [ ] Patient consent on file for any testimonial or case image used
+
+- [ ] **Approach section** (home): confirm Dr. Gupta is happy with the three principles in `site.ts → home.approach` (wording reused from the Robotic page).

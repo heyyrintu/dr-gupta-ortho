@@ -52,12 +52,13 @@ radii, type) live in `src/styles/tokens.css`; this document explains intent.
 4. **Knee story** (pinned scroll, 500vh desktop / 540vh mobile, tint band) — see §5.
 5. **About teaser** (tint) — framed theatre photo with caption; label, heading, paragraph, a 4-row training
    ledger, Full profile (outline), "For any questions" phone.
-6. **Conditions** `#conditions` — underline tabs (Knee … Fractures); card with headline, "When to see a
+5b. **Approach** — sticky heading + three numbered principles `(1)`–`(3)` (reused, factual copy; confirm wording).
+6. **Conditions** `#conditions` (tint) — underline tabs (Knee … Fractures); card with headline, "When to see a
    specialist" (brass rule), robotic link (knee/hip) · common conditions · treatment options + "Book a …
    consultation" → `/book?concern=id`.
-7. **Locations** (tint) — two-column numbered hairline list of 7 → `/book?location=id`; OPD label or "Call to confirm timings".
-8. **Reviews** — quote cards when `reviews` has data; otherwise a serif line + "Read reviews on Google".
-9. **Case studies** (tint) — carousel of 3 cards linking to existing case-study posts.
+7. **Locations** — two-column numbered hairline list of 7 → `/book?location=id`; OPD label or "Call to confirm timings".
+8. **Reviews** (tint) — quote cards when `reviews` has data; otherwise a serif line + "Read reviews on Google".
+9. **Case studies** — carousel of 3 cards linking to existing case-study posts.
 10. **CTA band** — navy panel, serif heading, ivory + outlined buttons.
 
 ### Inner pages — shared pattern

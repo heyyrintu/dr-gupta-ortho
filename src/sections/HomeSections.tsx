@@ -151,6 +151,29 @@ export function StatsBand() {
   );
 }
 
+/* ================= APPROACH ================= */
+export function Approach() {
+  const a = home.approach;
+  return (
+    <section className="section-band">
+      <div className="container split">
+        <Head eyebrow={a.eyebrow} title={a.title} intro={a.intro} />
+        <ol className="principles">
+          {a.items.map((it, i) => (
+            <Reveal as="li" key={it.t} delay={i * 60} className="principles__item">
+              <span className="principles__n">({i + 1})</span>
+              <div>
+                <h3 className="principles__t">{it.t}</h3>
+                <p>{it.b}</p>
+              </div>
+            </Reveal>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
 /* ================= CONDITIONS ================= */
 export function ConditionExplorer() {
   const [i, setI] = useState(0);
@@ -163,7 +186,7 @@ export function ConditionExplorer() {
   const cur = areas[i];
   const c = home.conditions;
   return (
-    <section id="conditions" className="section-band">
+    <section id="conditions" className="section-band section-band--tint">
       <div className="container">
         <Head eyebrow={c.eyebrow} title={c.title} intro={c.intro} />
         <Segmented items={areas.map((a) => ({ id: a.id, label: a.title }))} value={i} onChange={setI} label="Body area" idPrefix="tab" controls="condition-panel" />
@@ -195,7 +218,7 @@ export function ConditionExplorer() {
 export function LocationsStrip() {
   const l = home.locations;
   return (
-    <section className="section-band section-band--tint">
+    <section className="section-band">
       <div className="container">
         <Head eyebrow={l.eyebrow} title={l.title}>
           <MoreLink to="/book">Book an appointment</MoreLink>
@@ -231,7 +254,7 @@ export function LocationList({ items }: { items: Location[] }) {
 export function Reviews() {
   const r = home.reviews;
   return (
-    <section className="section-band">
+    <section className="section-band section-band--tint">
       <div className="container">
         <Head eyebrow={r.eyebrow} title={r.title}>
           {googleRating && (
@@ -268,7 +291,7 @@ export function Cases() {
   const imgs = ['theatre-2', 'theatre-1', 'theatre-2'];
   const c = home.cases;
   return (
-    <section className="section-band section-band--tint">
+    <section className="section-band">
       <div className="container">
         <Head eyebrow={c.eyebrow} title={c.title} />
         <Carousel label="Case studies">

@@ -325,6 +325,14 @@ a.more-link:hover svg, .case-card:hover .more-link svg { transform: translateX(4
   .ledger__row { grid-template-columns: 1fr; gap: 2px; }
 }
 
+/* ============ Approach (numbered principles beside a sticky heading) ============ */
+.principles { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
+.principles__item { display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 32px 0; border-bottom: 1px solid var(--rule); }
+.principles__n { font-family: var(--font-display); font-weight: 420; font-size: 1rem; color: var(--brass-text); padding-top: 6px; font-variant-numeric: lining-nums; }
+.principles__t { font-size: clamp(1.35rem, 1.15rem + 0.6vw, 1.7rem); font-weight: 400; line-height: 1.25; letter-spacing: -0.012em; color: var(--ink); margin-bottom: 10px; }
+.principles__item p { color: var(--text-2); max-width: 34em; }
+@media (max-width: 560px) { .principles__item { grid-template-columns: 1fr; gap: 6px; padding: 26px 0; } }
+
 /* ============ Conditions ============ */
 .cond { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: clamp(32px, 4vw, 56px); padding: clamp(28px, 4vw, 52px); background: var(--card); border: 1px solid var(--rule); animation: fadeIn 0.45s var(--ease-out); }
 .cond__intro { display: flex; flex-direction: column; gap: 22px; align-items: flex-start; }
